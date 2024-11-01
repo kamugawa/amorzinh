@@ -1,0 +1,261 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Define a box-sizing padrão para facilitar o controle de espaçamentos */
+}
+
+ul {
+    list-style: none; /* Remove os marcadores de lista padrão */
+}
+
+a {
+    text-decoration: none; /* Remove o sublinhado dos links */
+}
+
+/* Root / Variáveis */
+:root {
+    --base-color: #7c0e0e; /* Cor base */
+    --base-color-second: #370303f1; /* Segunda cor base */
+    --base-color-alt: #3e0303; /* Cor alternativa */
+    --body-color: rgb(17, 1, 1); /* Cor de fundo do corpo */
+    --title-color: #fff; /* Cor dos títulos */
+    --text-color: #e0e0e0; /* Cor do texto */
+    --highlight-color: #ff6b6b; /* Cor de destaque */
+}
+
+/* Body */
+body {
+    font-family: 'Montserrat', sans-serif; /* Atualizando para a fonte Montserrat */
+    background-color: var(--body-color); /* Cor de fundo do corpo */
+    color: var(--text-color); /* Cor do texto */
+    overflow-x: hidden; /* Evita rolagem horizontal */
+    line-height: 1.6; /* Espaçamento entre linhas */
+}
+
+/* Títulos principais */
+h1, h2 {
+    text-align: center; /* Centraliza os títulos */
+    color: var(--title-color); /* Cor dos títulos */
+    margin-bottom: 10px; /* Margem inferior */
+    font-family: 'Montserrat', sans-serif; /* Fonte para os títulos */
+}
+
+/* Container principal */
+.container {
+    max-width: 1200px; /* Largura máxima do container */
+    margin: auto; /* Centraliza o container */
+    padding: 20px; /* Espaçamento interno */
+}
+
+/* Carrossel de texto */
+.text-carousel {
+    zoom: 75%;
+    font-family: 'Playfair Display', serif;
+    display: flex;
+    flex-direction: column; /* Organiza os elementos em coluna */
+    align-items: center; /* Centraliza horizontalmente */
+    justify-content: center; /* Centraliza verticalmente */
+    height: 150vh; /* Ocupa toda a altura disponível */
+    padding: 5px; /* Adiciona espaçamento ao redor do carrossel */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.567); /* Sombra ao redor do carrossel */
+    border-radius: 15px; /* Bordas arredondadas */
+    background-color: #240808; /* Cor de fundo do carrossel */
+    max-width: 2000px; /* Largura máxima do carrossel */
+    margin: 20px auto; /* Margem automática para centralização */
+    box-sizing: border-box; /* Inclui padding e bordas no cálculo da largura */
+    cursor: grab; /* Cursor de mão ao passar por cima */
+}
+
+.text-carousel:active {
+    cursor: grabbing; /* Cursor de mão fechada ao arrastar */
+}
+
+.text-carousel p {
+    font-size: 1.5em; /* Tamanho padrão do texto */
+    color: var(--text-color); /* Cor do texto com a variável */
+    margin: 10px 0; /* Espaçamento vertical entre parágrafos */
+    text-align: center; /* Centraliza o texto */
+}
+
+.text-carousel h1 {
+    font-size: 2.9em; /* Tamanho do título */
+    color: var(--highlight-color); /* Cor do título com a variável */
+}
+
+/* Media Queries para melhorar a responsividade do texto */
+@media (max-width: 1024px) {
+    .text-carousel p {
+        font-size: 1.4em; /* Ajuste a fonte para tablets */
+        margin: 0 10px; /* Margem reduzida para se ajustar a telas menores */
+    }
+    
+    .text-carousel h1 {
+        font-size: 2.5em; /* Tamanho do título em tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .text-carousel p {
+        font-size: 1.3em; /* Diminui o tamanho da fonte em telas menores */
+        margin: 0 5px; /* Margem ainda menor */
+    }
+    
+    .text-carousel h1 {
+        font-size: 2.3em; /* Tamanho do título em telas menores */
+    }
+}
+
+@media (max-width: 480px) {
+    .text-carousel p {
+        font-size: 1.1em; /* Tamanho ainda menor em telas muito pequenas */
+        margin: 0 2px; /* Margem mínima em telas muito pequenas */
+    }
+    
+    .text-carousel h1 {
+        font-size: 2em; /* Tamanho do título ainda menor em telas muito pequenas */
+    }
+}
+
+/* Animação de fade-in para o parágrafo ativo */
+.text-carousel p.active {
+    display: block; /* Exibe o parágrafo ativo */
+    animation: fade-in 0.5s ease-in-out; /* Animação mais rápida ao exibir */
+}
+
+/* Ajustes adicionais para dispositivos muito pequenos */
+@media (max-width: 320px) {
+    .text-carousel p {
+        font-size: 0.9em; /* Tamanho da fonte ainda menor em telas extra pequenas */
+    }
+    
+    .text-carousel h1 {
+        font-size: 1.8em; /* Tamanho do título ainda menor */
+    }
+}
+
+/* Estilo de parágrafos no carrossel */
+.text-carousel p {
+    display: none; /* Esconde todos os parágrafos inicialmente */
+    font-size: 1.5rem; /* Tamanho da fonte aumentado */
+    color: var(--text-color); /* Cor do texto */
+    margin: 0 20px; /* Margem lateral para evitar que o texto encoste nas bordas */
+    cursor: pointer; /* Cursor de mão ao passar sobre o texto */
+}
+
+.text-carousel p.active {
+    display: block; /* Exibe o parágrafo ativo */
+    animation: fade-in 1s ease-in-out; /* Animação ao exibir */
+}
+
+/* Animação de fade-in */
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Controles do carrossel de texto */
+.carousel-controls {
+    display: flex;
+    justify-content: center; /* Centraliza os botões */
+    position: absolute; /* Permite que os botões fiquem sobre o texto */
+    bottom: 20px; /* Distância do fundo do carrossel */
+    gap: 10px; /* Espaçamento entre os botões */
+}
+
+.carousel-controls button {
+    background-color: var(--highlight-color); /* Cor de fundo dos botões */
+    border: none; /* Remove bordas */
+    color: #ffffff; /* Cor do texto dos botões */
+    padding: 10px 20px; /* Aumentado o padding */
+    cursor: pointer; /* Cursor de mão ao passar por cima */
+    border-radius: 25px; /* Bordas mais arredondadas */
+    font-size: 1.2em; /* Tamanho da fonte dos botões */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s; /* Transições suaves */
+}
+
+.carousel-controls button:hover {
+    background-color: var(--base-color); /* Cor do botão ao passar o mouse */
+    transform: translateY(-2px); /* Efeito de elevação ao passar o mouse */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Aumenta a sombra ao passar o mouse */
+}
+
+.carousel-controls button:focus {
+    outline: none; /* Remove o contorno padrão ao focar no botão */
+    box-shadow: 0 0 0 2px var(--highlight-color); /* Sombra ao focar */
+}
+
+/* Player de música */
+.music-player {
+    display: flex; /* Flexbox para organizar os elementos */
+    align-items: center; /* Alinha os elementos ao centro */
+    justify-content: space-between; /* Distribui o espaço entre elementos */
+    margin: 15px 0; /* Espaçamento entre players */
+    background: linear-gradient(135deg, rgba(124, 14, 14, 0.9), rgba(55, 3, 3, 0.9)); /* Gradiente de fundo */
+    border-radius: 15px; /* Bordas arredondadas */
+    padding: 15px; /* Espaçamento interno */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Sombra suave */
+}
+
+/* Informações da faixa */
+.track-info {
+    display: flex;
+    flex-direction: column; /* Coloca título e artista um abaixo do outro */
+    margin-left: 15px; /* Espaço entre as informações e os botões */
+}
+
+.track-title {
+    font-weight: bold; /* Título em negrito */
+    color: #fff; /* Cor do texto do título */
+}
+
+.track-artist {
+    color: #ccc; /* Cor do texto do artista */
+    font-size: 0.9em; /* Tamanho da fonte do artista */
+}
+
+/* Estilo dos botões de controle */
+.controls {
+    display: flex; /* Flexbox para organizar os botões */
+    align-items: center; /* Alinha os botões ao centro */
+}
+
+.music-player button {
+    background-color: var(--highlight-color); /* Cor de fundo dos botões */
+    border: none; /* Remove bordas */
+    color: #fff; /* Cor do texto dos botões */
+    padding: 10px; /* Padding dos botões */
+    margin-left: 10px; /* Espaçamento entre botões */
+    border-radius: 50%; /* Botões redondos */
+    cursor: pointer; /* Cursor de mão ao passar por cima */
+    transition: background-color 0.3s, transform 0.2s; /* Transições suaves */
+    display: flex; /* Flex para centralizar ícones */
+    align-items: center; /* Centraliza ícones verticalmente */
+    justify-content: center; /* Centraliza ícones horizontalmente */
+    width: 40px; /* Largura fixa para botões */
+    height: 40px; /* Altura fixa para botões */
+}
+
+/* Efeitos nos botões de controle */
+.music-player button:hover {
+    background-color: var(--base-color); /* Cor ao passar o mouse */
+    transform: scale(1.1); /* Aumenta levemente o botão */
+}
+
+/* Estilo para o botão de parar */
+.music-player button.stop {
+    background-color: #ff4d4d; /* Cor de fundo diferente para parar */
+}
+
+/* Responsividade para o player de música */
+@media (max-width: 600px) {
+    .music-player {
+        flex-direction: column; /* Organiza os elementos verticalmente */
+        align-items: flex-start; /* Alinha os elementos à esquerda */
+    }
+    
+    .controls {
+        margin-top: 10px; /* Espaçamento entre informações e controles */
+    }
+}
